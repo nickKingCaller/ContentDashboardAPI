@@ -1,9 +1,11 @@
 const fs = require('fs');
 const { google } = require('googleapis');
-const path = require('path');
+const config = require('../config');
+
+const credentials = JSON.parse(config.DRIVE_ACCESS);
 
 const auth = new google.auth.GoogleAuth({
-    keyFile: path.join(__dirname, '../utilities/assets/drive-access.json'),
+    credentials,
     scopes: ['https://www.googleapis.com/auth/drive'],
 });
 
